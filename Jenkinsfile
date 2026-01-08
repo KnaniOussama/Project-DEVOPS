@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials' // Jenkins credential ID
-        DOCKER_HUB_ORG = 'your_dockerhub_org' // Replace with your Docker Hub organization
+        DOCKER_HUB_CREDENTIALS = '%a2wm#=7pZEBdQC' // Jenkins credential ID
+        DOCKER_HUB_ORG = 'halcyonxii' // Replace with your Docker Hub organization
         BACKEND_IMAGE = "${DOCKER_HUB_ORG}/car-management-backend"
         FRONTEND_IMAGE = "${DOCKER_HUB_ORG}/car-rental-frontend"
         IMAGE_TAG = "${env.BUILD_ID}"
