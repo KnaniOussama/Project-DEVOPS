@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: car-rental-frontend
-          image: your_dockerhub_org/car-rental-frontend:latest # Replace with your Docker Hub organization and a specific tag if needed
+          image: halcyonxii/car-rental-frontend:latest
           ports:
             - containerPort: 80
           livenessProbe:
