@@ -7,7 +7,7 @@ grafana:
     enabled: true
     hosts:
       - grafana.local
-  adminPassword: prom-operator # Change this to a strong password
+  adminPassword: prom
 
 kubeApiServer:
   enabled: false
@@ -41,4 +41,4 @@ prometheus:
     additionalScrapeConfigs: |
       - job_name: 'car-management-backend'
         static_configs:
-          - targets: ['backend-service:3000'] # Use the Kubernetes service name and port
+          - targets: ['backend-service:3000']

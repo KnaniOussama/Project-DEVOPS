@@ -9,10 +9,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      # TODO: Replace with actual database connection string and JWT secret
       MONGODB_URI: mongodb+srv://admin:admin@uber-eats-clone.xgq9sno.mongodb.net/carrental?retryWrites=true&w=majority&appName=uber-eats-clone
       JWT_SECRET: superSecretKeyThatShouldBeLongAndComplexInProduction
       JWT_EXPIRATION_TIME: 3600s
     command: npm run start:prod
+
+  frontend:
+    build:
+      context: ./car-rental-frontend
+      dockerfile: Dockerfile
+    container_name: car-rental-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
 
 

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: car-management-backend
-          image: your_dockerhub_org/car-management-backend:latest # Replace with your Docker Hub organization and a specific tag if needed
+          image: halcyonxii/car-management-backend:latest
           ports:
             - containerPort: 3000
           envFrom:
