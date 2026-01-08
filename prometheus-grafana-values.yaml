@@ -1,0 +1,44 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: true
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.local
+  adminPassword: prom-operator # Change this to a strong password
+
+kubeApiServer:
+  enabled: false
+kubelet:
+  enabled: false
+kubeControllerManager:
+  enabled: false
+kubeEtcd:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeProxy:
+  enabled: false
+
+prometheus:
+  enabled: true
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        release: prometheus
+    podMonitorSelector:
+      matchLabels:
+        release: prometheus
+    ruleSelector:
+      matchLabels:
+        release: prometheus
+    probeSelector:
+      matchLabels:
+        release: prometheus
+    # Example of adding a custom scrape configuration for your backend
+    additionalScrapeConfigs: |
+      - job_name: 'car-management-backend'
+        static_configs:
+          - targets: ['backend-service:3000'] # Use the Kubernetes service name and port

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  labels:
+    app: car-management-backend
+data:
+  DATABASE_URL: mongodb://mongodb-service:27017/nestjs
+  JWT_SECRET: your_jwt_secret_key
+  JWT_EXPIRATION_TIME: 3600s

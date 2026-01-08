@@ -174,7 +174,7 @@ const CarDetailsModal: React.FC<CarDetailsModalProps> = ({
                         report.severity === 'HIGH'
                           ? 'destructive'
                           : report.severity === 'MEDIUM'
-                          ? 'warning'
+                          ? 'secondary'
                           : 'outline'
                       }
                     >

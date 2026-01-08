@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CarModule } from './car/car.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { CarModule } from './car/car.module';
+import { TerminusModule } from '@nestjs/terminus';
+import { MetricsModule } from './metrics/metrics.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 
 @Module({
   imports: [
@@ -20,6 +23,10 @@ import { AuthModule } from './auth/auth.module';
     }),
     CarModule,
     AuthModule,
+    TerminusModule,
+    PrometheusModule.register(),
+    MetricsModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],

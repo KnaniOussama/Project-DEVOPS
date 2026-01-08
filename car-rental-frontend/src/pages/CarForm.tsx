@@ -29,18 +29,17 @@ const CarForm: React.FC<CarFormProps> = ({ initialValues, onSubmit, onCancel, is
     brand: '',
     model: '',
     year: new Date().getFullYear(),
-    specifications: [],
+    specifications: initialValues?.specifications ? initialValues.specifications.join(', ') : '',
     totalKilometers: 0,
     status: 'AVAILABLE',
     ...(initialValues || {}), // Merge initial values if provided
-    specifications: initialValues?.specifications ? initialValues.specifications.join(', ') : '', // Convert array to string for display
-  } as CarFormValues); // Cast to CarFormValues to satisfy TypeScript
+  } as unknown as CarFormValues); // Cast to CarFormValues to satisfy TypeScript
 
   useEffect(() => {
     if (initialValues) {
       setFormValues({
         ...initialValues,
-        specifications: initialValues.specifications.join(', '), // Convert array to string for display
+        specifications: initialValues.specifications, // Convert array to string for display
       });
     } else {
       setFormValues({ // Reset for new car

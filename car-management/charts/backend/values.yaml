@@ -1,0 +1,43 @@
+replicaCount: 1
+
+image:
+  repository: your_dockerhub_org/car-management-backend
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 3000
+
+env:
+  databaseUrl: mongodb://mongodb-service:27017/nestjs
+  jwtSecret: your_jwt_secret_key
+  jwtExpirationTime: 3600s
+
+resources: {}
+  # We usually recommend not to specify default resources for production environments as this Helm chart is likely to be used as a dependency. When you are deploying an application to production, it is better to adjust the resources from the top-level Chart. For this reason, we have compiled a responsibilities guide to help you choose the right resource limits for your application.
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+affinity: {}
+
+tolerations: {}
